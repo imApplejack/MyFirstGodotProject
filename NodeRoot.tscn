@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://NodeRoot.cs" type="Script" id=1]
 [ext_resource path="res://Assets/carte-de-france-administrative.webp" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://RegionUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/bretagne_background.webp" type="Texture" id=6]
 [ext_resource path="res://Assets/loireatlantique_background.jpg" type="Texture" id=7]
+[ext_resource path="res://TroopUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI.cs" type="Script" id=9]
 
 [node name="NodeRoot" type="Node2D"]
 script = ExtResource( 1 )
@@ -18,19 +20,29 @@ position = Vector2( 720, 782 )
 texture = ExtResource( 2 )
 
 [node name="Bretagne" parent="." instance=ExtResource( 3 )]
-position = Vector2( 223, 418 )
+position = Vector2( 215, 373 )
 RegionName = "Bretagne"
 background = ExtResource( 6 )
 
 [node name="Troupe" parent="Bretagne" instance=ExtResource( 4 )]
-position = Vector2( -1, -2 )
+position = Vector2( -1, -3 )
+TroopName = "Dark magician girl"
 
 [node name="LoireAtlantique" parent="." instance=ExtResource( 3 )]
 position = Vector2( 700, 186 )
 RegionName = "Loire atlantique"
 background = ExtResource( 7 )
 
-[node name="UX" parent="." instance=ExtResource( 5 )]
+[node name="UI" type="Node2D" parent="."]
+script = ExtResource( 9 )
 
-[connection signal="clic_region_signal" from="Bretagne" to="UX" method="ClicRegionSignal"]
-[connection signal="clic_region_signal" from="LoireAtlantique" to="UX" method="ClicRegionSignal"]
+[node name="RegionUI" parent="UI" instance=ExtResource( 5 )]
+position = Vector2( 807, 518 )
+script = null
+
+[node name="TroopUI" parent="UI" instance=ExtResource( 8 )]
+position = Vector2( 823, 400 )
+
+[connection signal="clic_region_signal" from="Bretagne" to="UI" method="ClicRegionSignal"]
+[connection signal="clic_troupe_signal" from="Bretagne/Troupe" to="UI" method="_on_Troupe_clic_troupe_signal"]
+[connection signal="clic_region_signal" from="LoireAtlantique" to="UI" method="ClicRegionSignal"]

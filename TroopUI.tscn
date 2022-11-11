@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/pngwing.com.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 823, 399 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_right = 200.0
+margin_bottom = 200.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 5.0
+margin_top = 8.0
+margin_right = 185.0
+margin_bottom = 22.0
+text = "Mon text"
+uppercase = true
