@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/pngwing.com.png" type="Texture" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 74.0
+
+[node name="Troupe" type="Node2D"]
+position = Vector2( 341, 143 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 6, -1 )
+scale = Vector2( 0.105942, 0.105942 )
+texture = ExtResource( 1 )
