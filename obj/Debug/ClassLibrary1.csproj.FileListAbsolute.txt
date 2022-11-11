@@ -1,0 +1,9 @@
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\bin\Debug\StubProj.dll
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\bin\Debug\StubProj.pdb
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\bin\Debug\MyFirstGodotProject.dll
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\bin\Debug\MyFirstGodotProject.pdb
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\obj\Debug\ClassLibrary1.csproj.AssemblyReference.cache
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\obj\Debug\ClassLibrary1.csproj.CoreCompileInputs.cache
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\obj\Debug\ClassLibrary1.csproj.CopyComplete
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\obj\Debug\StubProj.dll
+C:\Users\lolec\OneDrive\Documents\Projets\MyFirstGodotProject\obj\Debug\StubProj.pdb
