@@ -13,6 +13,16 @@ public class NodeRoot : Node2D
 	[Export]
 	int myVar = 5;
 
+    public Troupe SelectedTroupe { get; set; } = null;
+
+    public RegionMap SelectedTRegion { get; set; } = null; // PQ stackoverflow
+
+
+
+
+    
+
+
     // workaround nul pour ce probleme la : https://godotengine.org/qa/28305/collisionobject2d-_input_event-trigger-topmost-collision
     private  List<Node2D> hoveredElements = new List<Node2D>();
 
@@ -22,9 +32,53 @@ public class NodeRoot : Node2D
        
     }
 
+
+    public void SelectTroup(Troupe troup)
+    {
+        SelectedTroupe = troup;
+        SelectedTRegion = null;
+    }
+
+    public void SelectRegion(RegionMap region)
+    {
+        SelectedTRegion = region;
+        SelectedTroupe = null;
+    }
+
+    public void TroupeToRegionMap(RegionMap region) {
+        if(SelectedTroupe != null)
+        {
+
+            //Troupe troupe = (Troupe)region.GetNode("Troupe");
+
+            // GD.Print("la troupe" + troupe);
+            
+            SelectedTroupe.GetParent().RemoveChild(SelectedTroupe);
+ 
+            region.AddChild(SelectedTroupe);
+
+        }
+        else
+        {
+            GD.PrintErr("illegal operation");
+        }
+    }
+
+
+
     public void addHoveredElement(Node2D element)
 	{
         hoveredElements.Add(element);
+
+
+     /*   RegionMap elementMap = element as RegionMap;
+        
+        if(elementMap != null)
+        {
+           // GD.Print("node root : " + elementMap.RegionName);
+        }
+     */
+
     }
 
     public void removeHoveredElement(Node2D element)
@@ -76,6 +130,8 @@ public class NodeRoot : Node2D
 	{
 
 		AbstractMapElement.Root = this; // degeu
+        this.SelectedTroupe = null;
+        this.SelectedTRegion = null;
 
         GD.Print("start init");
 	}

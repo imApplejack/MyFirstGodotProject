@@ -67,7 +67,7 @@ public class Troupe : AbstractMapElement
                 GD.Print("click gauche sur la " + this.TroopName);
                 EmitSignal("clic_troupe_signal", this);
 
-                this.selected = true;
+                Root.SelectTroup(this);
                // this.CallAnimation("RotationAnimation");
 
 

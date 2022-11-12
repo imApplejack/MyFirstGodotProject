@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://NodeRoot.cs" type="Script" id=1]
 [ext_resource path="res://Assets/carte-de-france-administrative.webp" type="Texture" id=2]
@@ -9,31 +9,14 @@
 [ext_resource path="res://Assets/loireatlantique_background.jpg" type="Texture" id=7]
 [ext_resource path="res://TroopUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI.cs" type="Script" id=9]
+[ext_resource path="res://Assets/les-cotes-d-armor-une.jpg" type="Texture" id=10]
+[ext_resource path="res://Assets/ileetvilaine.jpg" type="Texture" id=11]
 
 [node name="NodeRoot" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Carte-de-france-administrative" type="Sprite" parent="."]
-visible = false
-modulate = Color( 1, 1, 1, 0.117647 )
-position = Vector2( 720, 782 )
-texture = ExtResource( 2 )
-
-[node name="Bretagne" parent="." instance=ExtResource( 3 )]
-position = Vector2( 215, 373 )
-RegionName = "Bretagne"
-background = ExtResource( 6 )
-
-[node name="Troupe" parent="Bretagne" instance=ExtResource( 4 )]
-position = Vector2( -1, -3 )
-TroopName = "Dark magician girl"
-
-[node name="LoireAtlantique" parent="." instance=ExtResource( 3 )]
-position = Vector2( 700, 186 )
-RegionName = "Loire atlantique"
-background = ExtResource( 7 )
-
 [node name="UI" type="Node2D" parent="."]
+z_as_relative = false
 script = ExtResource( 9 )
 
 [node name="RegionUI" parent="UI" instance=ExtResource( 5 )]
@@ -43,6 +26,64 @@ script = null
 [node name="TroopUI" parent="UI" instance=ExtResource( 8 )]
 position = Vector2( 823, 400 )
 
-[connection signal="clic_region_signal" from="Bretagne" to="UI" method="ClicRegionSignal"]
-[connection signal="clic_troupe_signal" from="Bretagne/Troupe" to="UI" method="_on_Troupe_clic_troupe_signal"]
-[connection signal="clic_region_signal" from="LoireAtlantique" to="UI" method="ClicRegionSignal"]
+[node name="Carte-de-france-administrative" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.117647 )
+position = Vector2( 720, 782 )
+texture = ExtResource( 2 )
+
+[node name="Morbian" parent="." instance=ExtResource( 3 )]
+position = Vector2( 290, 490 )
+RegionName = "Morbian"
+background = ExtResource( 7 )
+
+[node name="Polygon2D" parent="Morbian" index="1"]
+position = Vector2( 27, 218 )
+texture_offset = Vector2( 223, 284 )
+polygon = PoolVector2Array( 35, -194, 27, -162, -36, -170, -101, -169, -68, -254, -17, -279, 30, -255 )
+
+[node name="IleEtVilaine" parent="." instance=ExtResource( 3 )]
+position = Vector2( 435, 501 )
+RegionName = "Ile et vilaine"
+background = ExtResource( 11 )
+
+[node name="Polygon2D" parent="IleEtVilaine" index="1"]
+position = Vector2( 169, 63 )
+polygon = PoolVector2Array( -110, -46, -135, -14, -226, 13, -232, -77, -206, -98, -196, -127, -161, -138, -106, -122 )
+
+[node name="Finistere" parent="." instance=ExtResource( 3 )]
+position = Vector2( 136, 483 )
+RegionName = "Finistere"
+background = ExtResource( 6 )
+
+[node name="Polygon2D" parent="Finistere" index="1"]
+position = Vector2( 94, -37 )
+polygon = PoolVector2Array( -35, 24, -37, 53, -34, 106, -154, 111, -149, -20, -85, -32, -35, -13 )
+
+[node name="CoteDarmor" parent="." instance=ExtResource( 3 )]
+position = Vector2( 331, 356 )
+RegionName = "Cote d'armor"
+background = ExtResource( 10 )
+
+[node name="CollisionPolygon2D" parent="CoteDarmor/Area2D" index="0"]
+position = Vector2( 104, -47 )
+
+[node name="Polygon2D" parent="CoteDarmor" index="1"]
+position = Vector2( 104, -47 )
+polygon = PoolVector2Array( -20, 47, -30, 78, -56, 100, -139, 90, -197, 9, -138, -9, -46, 32 )
+uv = PoolVector2Array( -20, 47, -30, 78, -56, 100, -139, 90, -197, 9, -138, -9, -46, 32 )
+
+[node name="Troupe" parent="CoteDarmor" instance=ExtResource( 4 )]
+position = Vector2( 0, 0 )
+scale = Vector2( 0.5, 0.5 )
+TroopName = "Dark magician girl"
+
+[connection signal="clic_region_signal" from="Morbian" to="UI" method="ClicRegionSignal"]
+[connection signal="clic_region_signal" from="IleEtVilaine" to="UI" method="ClicRegionSignal"]
+[connection signal="clic_region_signal" from="Finistere" to="UI" method="ClicRegionSignal"]
+[connection signal="clic_region_signal" from="CoteDarmor" to="UI" method="ClicRegionSignal"]
+[connection signal="clic_troupe_signal" from="CoteDarmor/Troupe" to="UI" method="_on_Troupe_clic_troupe_signal"]
+
+[editable path="Morbian"]
+[editable path="IleEtVilaine"]
+[editable path="Finistere"]
+[editable path="CoteDarmor"]

@@ -9,14 +9,15 @@ script = ExtResource( 2 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 position = Vector2( 4.07397, -1.57681 )
-polygon = PoolVector2Array( 81, -116, -190, -123, -160, 118, 130, 130, 229, 87, 227, -9 )
+polygon = PoolVector2Array( -11.074, 54.5768, 19.926, 22.5768, 12.926, 61.5768 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 texture = ExtResource( 1 )
-texture_offset = Vector2( 202, 200 )
+texture_offset = Vector2( 230, 200 )
 texture_rotation_degrees = -360.0
-polygon = PoolVector2Array( 227, -9, 230, 86, 142, 129, -158, 127, -186, -123, 80, -115 )
+polygon = PoolVector2Array( 227, -9, 230, 86, 142, 129, -158, 127, -186, -123, 76, -31, 219, -198 )
 
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]

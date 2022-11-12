@@ -28,7 +28,18 @@ public class UI : Node2D
         Backgroundtexture.Texture = entree.background;
 
 
-        Troupe troupe = (Troupe)entree.FindNode("Troupe");
+
+
+        //        foreach entree.GetChildren());
+
+        foreach (var item in entree.GetChildren())
+        {
+            GD.Print(((Node2D)item).Name);
+        }
+        Troupe troupe = (Troupe)entree.GetNodeOrNull("Troupe"); // FindNode ne find rien & getNode pete si il est pas la
+
+
+
         if (troupe != null)
         {
             ((Node2D)this.FindNode("TroopUI")).Visible = true;

@@ -25,6 +25,13 @@ namespace TestGoDotProject
 
         public void _on_Area2D_mouse_entered()
         {
+
+
+          
+                GD.Print("entering : " + this);
+          
+
+
             //GD.Print("mouse entered");
             Root.addHoveredElement(this);
             Hover = true;
@@ -34,6 +41,9 @@ namespace TestGoDotProject
         public void _on_Area2D_mouse_exited()
         {
             //GD.Print("mouse exited");
+
+            GD.Print("leavig : " + this);
+
             Root.removeHoveredElement(this);
             Hover = false;
             this.LeftHover();
